@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import kaboom, { KaboomCtx } from "kaboom";
-import { playerSpeed, scaleFactor } from "./constants";
+import { playerSpeed, scaleFactor } from "../constants";
 
 const KaboomComponent: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -46,15 +46,20 @@ const KaboomComponent: React.FC = () => {
             });
 
             k.loadFont("monogram", "/monogram.ttf");  // Load monogram font
-            k.loadSprite('spritesheet', '../spritesheet.png', {
+            k.loadSprite('spritesheet', '/spritesheet.png', {
                 sliceX: 39,
                 sliceY: 31,
                 anims: {
                     "idle-down": 936,
+                    "idle-up": 1014,
+                    "idle-left": 1053,
+                    "idle-right": 975,
+
                     "walk-down": { from: 936, to: 939, loop: true, speed: 8 },
                     "walk-up": { from: 1014, to: 1017, loop: true, speed: 8 },
                     "walk-left": { from: 1053, to: 1056, loop: true, speed: 8 },
                     "walk-right": { from: 975, to: 978, loop: true, speed: 8 },
+
 
 
                 },
@@ -157,6 +162,23 @@ const KaboomComponent: React.FC = () => {
                         k.camPos(player.pos.x, player.pos.y + 100);
                     });
 
+                    k.onKeyRelease(() => {
+                        switch (player.direction) {
+                            case "walk-down":
+                                player.play("idle-down");
+                                break;
+                            case "walk-up":
+                                player.play("idle-up");
+                                break;
+                            case "walk-left":
+                                player.play("idle-left");
+                                break;
+                            case "walk-right":
+                                player.play("idle-right");
+                                break;
+                        }
+                    })
+
                     k.onKeyDown((key) => {
                         if (player.isInDialogue) return;
                         switch (key) {
@@ -205,6 +227,27 @@ const KaboomComponent: React.FC = () => {
                             player.play(player.direction);
                         }
                         player.moveTo(worldMousePos, player.speed);
+                    });
+
+                    k.onMouseRelease(() => {
+
+                        switch (player.direction) {
+                            case "walk-down":
+                                player.play("idle-down");
+                                break;
+                            case "walk-up":
+                                player.play("idle-up");
+                                break;
+                            case "walk-left":
+                                player.play("idle-left");
+                                break;
+                            case "walk-right":
+                                player.play("idle-right");
+                                break;
+                        }
+
+
+
                     });
 
                 } catch (error) {

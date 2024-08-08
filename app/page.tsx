@@ -1,5 +1,5 @@
 "use client"
-import KaboomComponent from "./KaboomComponent";
+import KaboomComponent from "./kaboom/KaboomComponent";
 export default function Home() {
 
   return (
