@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import kaboom, { AnchorComp, AreaComp, BodyComp, GameObj, KaboomCtx, PosComp, ScaleComp, SpriteComp } from "kaboom";
-import { playerSpeed, scaleFactor, texts } from "../constants";
+import { playerSpeed, scaleFactor, TextWithPhoto, content } from "../constants";
 import { useRouter } from "next/navigation";
 
 const KaboomComponent: React.FC = () => {
@@ -11,6 +11,24 @@ const KaboomComponent: React.FC = () => {
     const [dialogueText, setDialogueText] = useState("");
     const [dialogueCallback, setDialogueCallback] = useState<(() => void) | null>(null);
     const router = useRouter()
+
+    // Define type for valid keys
+    type ContentKeys = keyof typeof content;
+
+    // Type guard to ensure key is valid
+    const isValidKey = (key: any): key is ContentKeys => {
+        return key in content;
+    };
+
+    // Function to get text and photo URL based on key
+    const getContent = (key: string): TextWithPhoto => {
+        if (isValidKey(key)) {
+            return content[key];
+        } else {
+            return {}; // Default to an empty object when key is invalid
+        }
+    };
+
     const closeDialogue = () => {
         setIsVisible(false);
         setDialogueText("");
@@ -46,7 +64,10 @@ const KaboomComponent: React.FC = () => {
                         router.push('/cv')
                     }, 3000)
                 }
-                displayDialogue(texts[propName], () => {
+
+                const { text = '', photoUrl = '' }: TextWithPhoto = content[propName] || {};
+
+                displayDialogue(text, () => {
 
                     player.isInDialogue = false;
                 });
@@ -241,7 +262,9 @@ const KaboomComponent: React.FC = () => {
 
                     });
 
-                    displayDialogue(texts.intro, () => {
+                    const { text = '', photoUrl = '' }: TextWithPhoto = content.intro || {};
+
+                    displayDialogue(text, () => {
                         player.isInDialogue = false;
                     })
 
