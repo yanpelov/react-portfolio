@@ -1,15 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import kaboom, { KaboomCtx } from "kaboom";
-import { playerSpeed, scaleFactor } from "../constants";
+import kaboom, { AnchorComp, AreaComp, BodyComp, GameObj, KaboomCtx, PosComp, ScaleComp, SpriteComp } from "kaboom";
+import { playerSpeed, scaleFactor, texts } from "../constants";
+import { useRouter } from "next/navigation";
 
 const KaboomComponent: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const [isVisible, setIsVisible] = useState(false);
     const [dialogueText, setDialogueText] = useState("");
     const [dialogueCallback, setDialogueCallback] = useState<(() => void) | null>(null);
-
+    const router = useRouter()
     const closeDialogue = () => {
         setIsVisible(false);
         setDialogueText("");
@@ -35,6 +36,23 @@ const KaboomComponent: React.FC = () => {
 
     }
 
+    const propAction = (player: GameObj<SpriteComp | PosComp | ScaleComp | AreaComp | BodyComp | AnchorComp | { speed: number; direction: string; isInDialogue: boolean; }>, propName: string) => {
+        player.onCollide(propName, () => {
+
+            if (!player.isInDialogue) {
+                player.isInDialogue = true;
+                if (propName === "cv") {
+                    setTimeout(() => {
+                        router.push('/cv')
+                    }, 3000)
+                }
+                displayDialogue(texts[propName], () => {
+
+                    player.isInDialogue = false;
+                });
+            }
+        });
+    }
 
 
     useEffect(() => {
@@ -123,37 +141,10 @@ const KaboomComponent: React.FC = () => {
 
                         if (layer.name === "props") {
                             layer.objects.forEach(prop => {
-                                if (prop.name === "fence") {
 
-                                    player.onCollide(prop.name, () => {
 
-                                        if (!player.isInDialogue) {
-                                            player.isInDialogue = true;
-                                            displayDialogue('dont jump over ', () => {
-                                                player.isInDialogue = false;
-                                                player.onKeyDown((key) => {
-                                                    switch (key) {
-                                                        case "down":
-                                                            player.move(0, player.speed);
-                                                            break;
-                                                    }
-                                                })
+                                propAction(player, prop.name)
 
-                                            });
-                                        }
-                                    });
-                                }
-
-                                if (prop.name === "potion") {
-                                    player.onCollide(prop.name, () => {
-                                        if (!player.isInDialogue) {
-                                            player.isInDialogue = true;
-                                            displayDialogue('you like it? ', () => {
-                                                player.isInDialogue = false;
-                                            });
-                                        }
-                                    });
-                                }
                             });
                         }
                     });
@@ -250,6 +241,10 @@ const KaboomComponent: React.FC = () => {
 
                     });
 
+                    displayDialogue(texts.intro, () => {
+                        player.isInDialogue = false;
+                    })
+
                 } catch (error) {
                     console.error("Failed to load map data:", error);
                 }
@@ -263,24 +258,14 @@ const KaboomComponent: React.FC = () => {
         <>
             <canvas ref={canvasRef} />
             {isVisible && (
-                <div
-                    style={{
-                        position: "absolute",
-                        bottom: "20px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        backgroundColor: "rgba(0, 0, 0, 0.8)",
-                        color: "white",
-                        padding: "10px",
-                        borderRadius: "10px",
-                        zIndex: 1000,
-                        fontFamily: "monogram",
-                        fontSize: "30px"
-                    }}
-                >
-                    {dialogueText}
-                    <button onClick={closeDialogue}>close</button>
-                </div>
+                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-80 text-black p-2.5 rounded-lg z-50 font-[monogram] text-2xl flex items-center">
+
+                    <div>
+                        <span dangerouslySetInnerHTML={{ __html: dialogueText }} />
+                    </div>
+
+                    <button className="flex justify-center font-[monogram] text-black bg-white bg-opacity-80 border-dashed border-2 border-black px-4 py-2 uppercase tracking-wider hover:bg-gray-800 hover:border-green-500 hover:text-green-500 opacity-80 hover:opacity-100" onClick={closeDialogue}>close</button>
+                </div >
             )}
         </>
     );
