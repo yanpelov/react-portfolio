@@ -9,6 +9,7 @@ const KaboomComponent: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const [isVisible, setIsVisible] = useState(false);
     const [dialogueText, setDialogueText] = useState("");
+    const [dialogueImg, setDialogueImg] = useState("")
     const [dialogueCallback, setDialogueCallback] = useState<(() => void) | null>(null);
     const router = useRouter()
 
@@ -32,6 +33,7 @@ const KaboomComponent: React.FC = () => {
     const closeDialogue = () => {
         setIsVisible(false);
         setDialogueText("");
+        setDialogueImg("")
         dialogueCallback?.();
     };
 
@@ -62,11 +64,11 @@ const KaboomComponent: React.FC = () => {
                 if (propName === "cv") {
                     setTimeout(() => {
                         router.push('/cv')
-                    }, 3000)
+                    }, 5000)
                 }
 
                 const { text = '', photoUrl = '' }: TextWithPhoto = content[propName] || {};
-
+                setDialogueImg(photoUrl)
                 displayDialogue(text, () => {
 
                     player.isInDialogue = false;
@@ -281,14 +283,14 @@ const KaboomComponent: React.FC = () => {
         <>
             <canvas ref={canvasRef} />
             {isVisible && (
-                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-80 text-black p-2.5 rounded-lg z-50 font-[monogram] text-2xl flex items-center">
-
+                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-80 text-black p-4 rounded-lg z-50 font-[monogram] text-2xl flex flex-col w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
+                    {dialogueImg.length > 0 ? <img className="p-2.5" src={dialogueImg} /> : <></>}
                     <div>
                         <span dangerouslySetInnerHTML={{ __html: dialogueText }} />
                     </div>
+                    <button className="font-[monogram] text-black bg-white mt-2 bg-opacity-80 border-dashed border-2 border-black px-4 py-2 uppercase tracking-wider hover:bg-gray-800 hover:border-green-500 hover:text-green-500 opacity-80 hover:opacity-100" onClick={closeDialogue}>Close</button>
+                </div>
 
-                    <button className="flex justify-center font-[monogram] text-black bg-white bg-opacity-80 border-dashed border-2 border-black px-4 py-2 uppercase tracking-wider hover:bg-gray-800 hover:border-green-500 hover:text-green-500 opacity-80 hover:opacity-100" onClick={closeDialogue}>close</button>
-                </div >
             )}
         </>
     );
