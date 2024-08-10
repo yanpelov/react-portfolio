@@ -36,7 +36,7 @@ const KaboomComponent: React.FC = () => {
             if (i < text.length) {
                 showed += text[i++];
                 setDialogueText(showed);
-                setTimeout(typeChars, 6);
+                setTimeout(typeChars, 5);
             }
         };
 
@@ -96,7 +96,6 @@ const KaboomComponent: React.FC = () => {
 
                     const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
                     k.onLoad(() => {
-                        // Calculate the center of the map
                         const mapCenterX = map.width * scaleFactor / 2;
                         const mapCenterY = map.height * scaleFactor / 2;
 
@@ -153,6 +152,8 @@ const KaboomComponent: React.FC = () => {
 
                         k.onUpdate(() => {
                             k.camPos(player.pos.x, player.pos.y + 100);
+
+
                         });
 
 
@@ -185,7 +186,6 @@ const KaboomComponent: React.FC = () => {
 
                         k.onMouseDown((mouseBtn) => {
                             if (mouseBtn !== "left" || player.isInDialogue) return;
-
                             const worldMousePos = k.toWorld(k.mousePos());
                             const diff = worldMousePos.sub(player.pos);
 
@@ -225,7 +225,6 @@ const KaboomComponent: React.FC = () => {
                             player.isInDialogue = false;
                         });
 
-
                     })
                 } catch (error) {
                     console.error("Failed to load map data:", error);
@@ -240,7 +239,7 @@ const KaboomComponent: React.FC = () => {
         <>
             <canvas ref={canvasRef} />
             {isVisible && (
-                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-green-400 bg-opacity-80 text-white p-4 rounded-lg z-50 font-[monogram] text-2xl flex flex-col w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
+                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-80 text-black p-4 rounded-lg z-50 font-[monogram] text-3xl flex flex-col w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
                     {dialogueImg.length > 0 ? (
                         <img
                             className="p-2.5 mx-auto w-full h-auto max-w-sm lg:max-w-[200px]"

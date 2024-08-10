@@ -1,4 +1,4 @@
-export const scaleFactor = 4;
+export const scaleFactor = 3.25;
 export const playerSpeed = 250;
 
 
@@ -9,8 +9,8 @@ export type TextWithPhoto = {
 
 export const content: Record<string, TextWithPhoto> = {
     intro: {
-        text: `Hi, I’m Yan, a Senior Software Developer. Feel free to explore my little game. If you’re curious about my background, you can check out my CV <a style="color:blue" href="/cv">here</a> or my LinkedIn profile <a style="color:blue" href="https://www.linkedin.com/in/yanpe/">here</a>. Have fun!`,
-        photoUrl: '/yan_logo.png'
+        text: `Hi, I’m Yan, a Senior Software Developer. Feel free to explore my little game. If you’re curious about my background, you can check out my <a style="color:blue" href="/cv">CV</a> or my <a style="color:blue" href="https://www.linkedin.com/in/yanpe/">LinkedIn profile</a>. Have fun!`,
+        photoUrl: '/yan.png'
     },
     saucelabs: {
         text: `Check out the sauces cabinet from the sauce laboratories at Sauce Labs. What’s your favorite sauce? (It’s the classic onboarding question at Sauce Labs). Did you know that <span style="color:green; font-weight:bold;">all sauces have passed and tested successfully ...by humans!</span>`,
@@ -29,27 +29,27 @@ export const content: Record<string, TextWithPhoto> = {
         photoUrl: '/heb_logo.png'
     },
     infinity: {
-        text: `Infinity Labs was like entering a competitive arena where only the most motivated developers thrived. It's like a coding marathon where data structures and algorithms are your energy drinks and the finish line is the next big breakthrough.`,
+        text: `Infinity Labs was like joining a competitive yet collaborative arena where teams of talented developers pushed each other to excel. It's like a coding marathon where data structures and algorithms are your energy drinks and the finish line is the next big breakthrough.`,
         photoUrl: '/infi_logo.png'
     },
     leetcode: {
-        text: `LeetCode is like the ultimate brain workout — a rollercoaster of challenges that keeps you on your toes. Just like the confetti in the photo frame, it’s thrilling, exhilarating, and occasionally mind-bending! Check out my LeetCode profile <a style="color:blue" href="https://leetcode.com/u/bentz123/">here</a>.`,
+        text: `LeetCode is like the ultimate brain workout — a rollercoaster of challenges that keeps you on your toes. Just like the blast in the photo frame, occasionally mind-bending! Check out my <a style="color:blue" href="https://leetcode.com/u/bentz123/">LeetCode profile</a>.`,
         photoUrl: '/lc_logo.png'
     },
     stackoverflow: {
-        text: `Welcome to Stack Overflow! Here’s where the coding community shares knowledge and finds solutions. Did you know that when a question is asked, it can get a 'high score' — just like a game? Check out my Stack Overflow profile <a style="color:blue" href="https://stackoverflow.com/users/6098812/bentz123">here</a>.`,
+        text: `Welcome to Stack Overflow! Here’s where the coding community shares knowledge and finds solutions. Did you know that when a question is asked, it can get a 'high score' — just like a game? Check out my <a style="color:blue" href="https://stackoverflow.com/users/6098812/bentz123">Stack Overflow profile</a>.`,
         photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Stack_Overflow_logo_2019.svg' // Replace with a more suitable logo URL if needed
     },
     freecodecamp: {
-        text: `Explore FreeCodeCamp, where coding dreams become reality! From front-end to back-end, it's a journey of learning and growth. Check out my FreeCodeCamp profile <a style="color:blue" href="https://www.freecodecamp.org/beleeleb">here</a>.`,
+        text: `Explore FreeCodeCamp, where coding dreams become reality! From front-end to back-end, it's a journey of learning and growth. Check out my <a style="color:blue" href="https://www.freecodecamp.org/beleeleb">FreeCodeCamp profile</a>.`,
         photoUrl: 'https://www.freecodecamp.org/news/content/images/2022/04/fcc-logos-06.png' // Replace with a more suitable logo URL if needed
     },
     cv: {
-        text: `Oh what's the funny paper on the desk? You're just 3 seconds away from diving into my CV and exploring my professional journey. Click <a style="color:blue" href="/cv">here</a> to check it out. See you on the other side!`,
+        text: `Oh what's the funny paper on the desk? You're just 3 seconds away from diving into my CV and exploring my professional journey. Click <a style="color:blue" href="/cv">CV</a> to check it out. See you on the other side!`,
         photoUrl: ''
     },
     door: {
-        text: `Nice to meet you! If you’d like to stay in touch or have a chat about coding adventures, here are my contact details. Feel free to reach out anytime, and don’t forget to connect with me on LinkedIn <a style="color:blue" href="https://www.linkedin.com/in/yanpe/">here</a>. Bye for now!`,
+        text: `Nice to meet you! If you’d like to stay in touch or have a chat about coding adventures,  feel free to reach me out anytime on <a style="color:blue" href="https://www.linkedin.com/in/yanpe/">LinkedIn</a>. Bye for now!`,
         photoUrl: ''
     },
     archive: {
