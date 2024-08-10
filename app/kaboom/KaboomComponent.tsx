@@ -172,7 +172,6 @@ const KaboomComponent: React.FC = () => {
 
                             k.onKeyPress(dir, () => {
                                 closeDialogue();
-
                                 player.isInDialogue = false;
                             })
                             k.onKeyDown(dir, () => {
@@ -200,6 +199,11 @@ const KaboomComponent: React.FC = () => {
                             }
                             player.moveTo(worldMousePos, player.speed);
                         });
+
+                        k.onMousePress(() => {
+                            closeDialogue();
+                            player.isInDialogue = false;
+                        })
 
 
                         k.onMouseRelease(() => {
@@ -250,12 +254,6 @@ const KaboomComponent: React.FC = () => {
                     <div>
                         <span dangerouslySetInnerHTML={{ __html: dialogueText }} />
                     </div>
-                    <button
-                        className="font-[monogram] text-black bg-green-900 mt-2 bg-opacity-80 border-dashed border-2 border-black px-4 py-2 uppercase tracking-wider hover:bg-gray-800 hover:border-green-500 hover:text-green-500 opacity-80 hover:opacity-100"
-                        onClick={closeDialogue}
-                    >
-                        Close
-                    </button>
                 </div>
 
 
