@@ -7,49 +7,45 @@ export type TextWithPhoto = {
     photoUrl?: string;
 }
 
-
 export const content: Record<string, TextWithPhoto> = {
     intro: {
-        text: `Welcome, fearless stranger! You’ve stepped into CodeLand, where every line of code tells a story and every bug is a dragon to be slayed. Ready to embark on an epic quest to uncover the legendary developer’s skills and achievements? Let the adventure begin!`,
+        text: `Hi, I’m Yan, a Senior Software Developer. Feel free to explore my little game. If you’re curious about my background, you can check out my CV <a style="color:blue" href="/cv">here</a> or head to the office by the exit. Have fun!`,
         photoUrl: ''
     },
     saucelabs: {
-        text: `Behold the legendary Sauce Labs cabinet! It's not just any sauce — it’s been tested on humans (and their taste buds). Which one will you choose? (My favorite onboarding question — it’s saucy, I know!) <span style="color:green">Rest assured, all sauces have been thoroughly tested.</span>`,
+        text: `Check out the sauces cabinet from the sauce laboratories at Sauce Labs. What’s your favorite sauce? (It’s the classic onboarding question at Sauce Labs) Did you know that <span style="color:green; font-weight:bold;">all sauces have passed and tested successfully ...by humans!</span>`,
         photoUrl: '/sl_logo.png'
     },
     audiocodes: {
-        text: `Welcome to the AudioCodes realm! Here, you’ll find the signal wave of the sound of... what’s this? A sin of sinosatis? Sounds like a plot twist in a sci-fi novel! Or maybe just a really complicated sound wave.`,
+        text: `Welcome to AudioCodes, where every sound wave tells a story! From launching new IP phone models to slashing latency with memory mapping, my time here was like a symphony of coding excellence. Plus, mastering SIP and RTP protocols was like hitting the high notes of networking.`,
         photoUrl: '/ac_logo.png'
     },
     beeriprint: {
-        text: `Ever wondered how many mailboxes a Be'eri Printers can print? Let’s just say it’s a mailbox bonanza. Beeri Printers: where mailboxes are printed in bulk, just like your favorite beer is brewed!`,
+        text: `Wondering how Be'eri Printers handles envelopes? Imagine a high-speed envelope fiesta! With a React front end and a PHP back end, we turned bulk processing into an art form. Be'eri Printers: where envelopes are managed with the precision of a fine brew.`,
         photoUrl: '/dfus_logo.png'
     },
-
     uni: {
-        text: `I graduated law. I came, I saw, I left for CS `,
+        text: `From law books to coding books — that’s my journey! Graduated law, but found my true calling in software development. Who knew the legal world would lead to coding adventures?`,
         photoUrl: '/heb_logo.png'
     },
-
     infinity: {
-        text: `Ever wondered how many mailboxes a Be'eri Printers can print? Let’s just say it’s a mailbox bonanza. Beeri Printers: where mailboxes are printed in bulk, just like your favorite beer is brewed!`,
+        text: `Infinity Labs was my playground for mastering software development in an agile environment. Think of it as a boot camp for coding superheroes, where data structures and algorithms are your trusty sidekicks.`,
         photoUrl: '/infi_logo.png'
     },
     leetcode: {
-        text: `LeetCode is like a rollercoaster for your brain — thrilling, challenging, and occasionally mind-bending. Your mind might go kaboom, just like the confetti in the photo frame. Buckle up and enjoy the ride!`,
+        text: `LeetCode is like the ultimate brain workout — a rollercoaster of challenges that keeps you on your toes. Just like the confetti in the photo frame, it’s thrilling, exhilarating, and occasionally mind-bending!`,
         photoUrl: '/leetcode.png'
     },
     cv: {
-        text: `Congratulations on making it this far! You’re about to be redirected — it’s like the suspenseful countdown before the big reveal. 3... 2... 1... Prepare for the grand finale!`,
+        text: `Congratulations on reaching the final frontier! You’re about to be redirected — countdown 3... 2... 1...`,
         photoUrl: ''
     },
     contact: {
-        text: `Well done! You remembered to turn off the lights before leaving. Now, if you want to keep in touch, here are my contacts. No need for a flashlight — just reach out!`,
+        text: `Well done! You’ve made it to the end of the journey. If you’d like to stay in touch or have a chat about coding adventures, here are my contact details. No need for a flashlight — just reach out!`,
         photoUrl: ''
     },
     archive: {
-        text: `Beeri archive`,
+        text: `Welcome to the Be'eri Archive, where envelopes are treated with the utmost care and efficiency. With a React-based frontend and robust AWS integration, managing documents has never been so streamlined. Dive into a project that takes envelope management to the next level!`,
         photoUrl: 'archie.png'
     }
 };
-

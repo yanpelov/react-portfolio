@@ -13,10 +13,8 @@ const KaboomComponent: React.FC = () => {
     const [dialogueCallback, setDialogueCallback] = useState<(() => void) | null>(null);
     const router = useRouter();
 
-    // Define type for valid keys
     type ContentKeys = keyof typeof content;
 
-    // Type guard to ensure key is valid
     const isValidKey = (key: any): key is ContentKeys => {
         return key in content;
     };
@@ -37,7 +35,7 @@ const KaboomComponent: React.FC = () => {
             if (i < text.length) {
                 showed += text[i++];
                 setDialogueText(showed);
-                setTimeout(typeChars, 10);
+                setTimeout(typeChars, 6);
             }
         };
 
