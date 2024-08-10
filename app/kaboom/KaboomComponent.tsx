@@ -240,7 +240,7 @@ const KaboomComponent: React.FC = () => {
         <>
             <canvas ref={canvasRef} />
             {isVisible && (
-                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-80 text-black p-4 rounded-lg z-50 font-[monogram] text-2xl flex flex-col w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
+                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-green-400 bg-opacity-80 text-white p-4 rounded-lg z-50 font-[monogram] text-2xl flex flex-col w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%]">
                     {dialogueImg.length > 0 ? (
                         <img
                             className="p-2.5 mx-auto w-full h-auto max-w-sm lg:max-w-[200px]"
@@ -252,7 +252,7 @@ const KaboomComponent: React.FC = () => {
                         <span dangerouslySetInnerHTML={{ __html: dialogueText }} />
                     </div>
                     <button
-                        className="font-[monogram] text-black bg-white mt-2 bg-opacity-80 border-dashed border-2 border-black px-4 py-2 uppercase tracking-wider hover:bg-gray-800 hover:border-green-500 hover:text-green-500 opacity-80 hover:opacity-100"
+                        className="font-[monogram] text-black bg-green-900 mt-2 bg-opacity-80 border-dashed border-2 border-black px-4 py-2 uppercase tracking-wider hover:bg-gray-800 hover:border-green-500 hover:text-green-500 opacity-80 hover:opacity-100"
                         onClick={closeDialogue}
                     >
                         Close

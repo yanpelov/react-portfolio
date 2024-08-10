@@ -34,7 +34,7 @@ export const content: Record<string, TextWithPhoto> = {
     },
     leetcode: {
         text: `LeetCode is like the ultimate brain workout — a rollercoaster of challenges that keeps you on your toes. Just like the confetti in the photo frame, it’s thrilling, exhilarating, and occasionally mind-bending!`,
-        photoUrl: '/leetcode.png'
+        photoUrl: '/lc_logo.png'
     },
     cv: {
         text: `Congratulations on reaching the final frontier! You’re about to be redirected — countdown 3... 2... 1...`,
