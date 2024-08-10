@@ -14,6 +14,7 @@ const KaboomComponent: React.FC = () => {
     const router = useRouter();
 
     type ContentKeys = keyof typeof content;
+    type Direction = "left" | "right" | "up" | "down";
 
     const isValidKey = (key: any): key is ContentKeys => {
         return key in content;
@@ -154,48 +155,33 @@ const KaboomComponent: React.FC = () => {
                             k.camPos(player.pos.x, player.pos.y + 100);
                         });
 
-                        k.onKeyRelease(() => {
-                            switch (player.direction) {
-                                case "walk-down":
-                                    player.play("idle-down");
-                                    break;
-                                case "walk-up":
-                                    player.play("idle-up");
-                                    break;
-                                case "walk-left":
-                                    player.play("idle-left");
-                                    break;
-                                case "walk-right":
-                                    player.play("idle-right");
-                                    break;
-                            }
-                        });
 
-                        k.onKeyDown((key) => {
-                            if (player.isInDialogue) return;
-                            switch (key) {
-                                case "left":
-                                    player.move(-player.speed, 0);
-                                    player.direction = "walk-left";
-                                    break;
-                                case "right":
-                                    player.move(player.speed, 0);
-                                    player.direction = "walk-right";
-                                    break;
-                                case "up":
-                                    player.move(0, -player.speed);
-                                    player.direction = "walk-up";
-                                    break;
-                                case "down":
-                                    player.move(0, player.speed);
-                                    player.direction = "walk-down";
-                                    break;
-                            }
+                        const dirs: Record<Direction, any> = {
+                            "left": k.LEFT,
+                            "right": k.RIGHT,
+                            "up": k.UP,
+                            "down": k.DOWN,
+                        };
 
-                            if (player.curAnim() !== player.direction) {
-                                player.play(player.direction);
-                            }
-                        });
+                        for (const dir of Object.keys(dirs) as Direction[]) {
+
+                            k.onKeyRelease(dir, () => {
+                                player.play(`idle-${dir}`);
+                            })
+
+                            k.onKeyPress(dir, () => {
+                                closeDialogue();
+
+                                player.isInDialogue = false;
+                            })
+                            k.onKeyDown(dir, () => {
+                                player.move(dirs[dir].scale(player.speed))
+                                player.direction = `walk-${dir}`
+                                if (player.curAnim() !== player.direction) {
+                                    player.play(player.direction);
+                                }
+                            })
+                        }
 
                         k.onMouseDown((mouseBtn) => {
                             if (mouseBtn !== "left" || player.isInDialogue) return;
@@ -214,6 +200,7 @@ const KaboomComponent: React.FC = () => {
                             }
                             player.moveTo(worldMousePos, player.speed);
                         });
+
 
                         k.onMouseRelease(() => {
                             switch (player.curAnim()) {
@@ -237,6 +224,8 @@ const KaboomComponent: React.FC = () => {
                         displayDialogue(text, () => {
                             player.isInDialogue = false;
                         });
+
+
                     })
                 } catch (error) {
                     console.error("Failed to load map data:", error);
