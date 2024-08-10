@@ -48,8 +48,8 @@ export const content: Record<string, TextWithPhoto> = {
         photoUrl: ''
     },
     archive: {
-        text: `Well done! You remembered to turn off the lights before leaving. Now, if you want to keep in touch, here are my contacts. No need for a flashlight — just reach out!`,
-        photoUrl: 'archive.svg'
+        text: `Beeri archive`,
+        photoUrl: 'archie.png'
     }
 };
 
