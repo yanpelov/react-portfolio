@@ -13,7 +13,7 @@ export const content: Record<string, TextWithPhoto> = {
         photoUrl: ''
     },
     saucelabs: {
-        text: `Check out the sauces cabinet from the sauce laboratories at Sauce Labs. What’s your favorite sauce? (It’s the classic onboarding question at Sauce Labs) Did you know that <span style="color:green; font-weight:bold;">all sauces have passed and tested successfully ...by humans!</span>`,
+        text: `Check out the sauces cabinet from the sauce laboratories at Sauce Labs. What’s your favorite sauce? (It’s the classic onboarding question at Sauce Labs). Did you know that <span style="color:green; font-weight:bold;">all sauces have passed and tested successfully ...by humans!</span>`,
         photoUrl: '/sl_logo.png'
     },
     audiocodes: {
@@ -40,12 +40,12 @@ export const content: Record<string, TextWithPhoto> = {
         text: `Congratulations on reaching the final frontier! You’re about to be redirected — countdown 3... 2... 1...`,
         photoUrl: ''
     },
-    contact: {
+    door: {
         text: `Well done! You’ve made it to the end of the journey. If you’d like to stay in touch or have a chat about coding adventures, here are my contact details. No need for a flashlight — just reach out!`,
         photoUrl: ''
     },
     archive: {
-        text: `Welcome to the Be'eri Archive, where envelopes are treated with the utmost care and efficiency. With a React-based frontend and robust AWS integration, managing documents has never been so streamlined. Dive into a project that takes envelope management to the next level!`,
+        text: `This cabinet is the memories cabinet were photos, documents and even movies are kept safe. Want a quick look? Check it out at <a style="color:blue" href="https://archie.beeri.org.il/search?searchTerm=*&searchTermModifier=any&firstRow=1&numberOfRows=50&sortField=dcDate&sortOrder=asc&dcTypeFilter=image&dcAccessRights=public">Be'eri Archive</a> - a precious team project`,
         photoUrl: 'archie.png'
     }
 };
