@@ -220,7 +220,7 @@ const KaboomComponent: React.FC = () => {
                         });
 
                         const { text = '', photoUrl = '' }: TextWithPhoto = content.intro || {};
-
+                        setDialogueImg(photoUrl);
                         displayDialogue(text, () => {
                             player.isInDialogue = false;
                         });
