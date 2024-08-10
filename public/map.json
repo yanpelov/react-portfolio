@@ -270,7 +270,7 @@
                  "gid":5467,
                  "height":16,
                  "id":464,
-                 "name":"",
+                 "name":"fruit",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -282,7 +282,7 @@
                  "gid":5451,
                  "height":16,
                  "id":465,
-                 "name":"",
+                 "name":"fruit",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -1001,10 +1001,6 @@
         {
          "firstgid":3025,
          "source":"..\/..\/..\/Downloads\/Adam_16x16.tsx"
-        }, 
-        {
-         "firstgid":3361,
-         "source":"..\/assets\/spritesheet.tsx"
         }, 
         {
          "firstgid":3361,
